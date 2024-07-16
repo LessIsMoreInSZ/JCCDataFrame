@@ -47,7 +47,7 @@ namespace JCCDataFrame.Entities
 
         public object Clone()
         {
-            ToxySpreadsheet newss = new ToxySpreadsheet();
+            JccSpreadsheet newss = new JccSpreadsheet();
             newss.Name = this.Name;
             for (int i = 0; i < this.Tables.Count; i++)
             {
