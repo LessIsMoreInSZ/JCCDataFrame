@@ -9,12 +9,12 @@ namespace JCCDataFrame.Entities
     {
         public JccSpreadsheet()
         {
-            this.Tables = new List<ToxyTable>();
+            this.Tables = new List<JccTable>();
         }
         public string Name { get; set; }
-        public List<ToxyTable> Tables { get; set; }
+        public List<JccTable> Tables { get; set; }
 
-        public ToxyTable this[string name]
+        public JccTable this[string name]
         {
             get
             {
@@ -51,7 +51,7 @@ namespace JCCDataFrame.Entities
             newss.Name = this.Name;
             for (int i = 0; i < this.Tables.Count; i++)
             {
-                newss.Tables.Add(this.Tables[i].Clone() as ToxyTable);
+                newss.Tables.Add(this.Tables[i].Clone() as JccTable);
             }
             return newss;
         }
