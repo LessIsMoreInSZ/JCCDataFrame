@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace JCCDataFrame.Entities
+namespace JCCDataFrame.Entities.Spreadsheet
 {
-    public class JccSpreadsheet:ICloneable
+    public class JccSpreadsheet : ICloneable
     {
         public JccSpreadsheet()
         {
-            this.Tables = new List<JccTable>();
+            Tables = new List<JccTable>();
         }
         public string Name { get; set; }
         public List<JccTable> Tables { get; set; }
@@ -22,10 +22,10 @@ namespace JCCDataFrame.Entities
                 {
                     throw new ArgumentNullException("sheet name cannot be empty or null");
                 }
-                for (int i = 0; i < this.Tables.Count; i++)
+                for (int i = 0; i < Tables.Count; i++)
                 {
-                    if (this.Tables[i].Name == name)
-                        return this.Tables[i];
+                    if (Tables[i].Name == name)
+                        return Tables[i];
                 }
                 return null;
             }
@@ -37,8 +37,8 @@ namespace JCCDataFrame.Entities
         public DataSet ToDataSet()
         {
             DataSet ds = new DataSet();
-            ds.DataSetName = this.Name;
-            foreach (var table in this.Tables)
+            ds.DataSetName = Name;
+            foreach (var table in Tables)
             {
                 ds.Tables.Add(table.ToDataTable());
             }
@@ -48,10 +48,10 @@ namespace JCCDataFrame.Entities
         public object Clone()
         {
             JccSpreadsheet newss = new JccSpreadsheet();
-            newss.Name = this.Name;
-            for (int i = 0; i < this.Tables.Count; i++)
+            newss.Name = Name;
+            for (int i = 0; i < Tables.Count; i++)
             {
-                newss.Tables.Add(this.Tables[i].Clone() as JccTable);
+                newss.Tables.Add(Tables[i].Clone() as JccTable);
             }
             return newss;
         }

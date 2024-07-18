@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JCCDataFrame.Entities
+namespace JCCDataFrame.Entities.Spreadsheet
 {
     public class JccRow : ICloneable
     {
@@ -10,8 +10,8 @@ namespace JCCDataFrame.Entities
         public int LastCellIndex { get; set; }
         public JccRow(int rowIndex)
         {
-            this.RowIndex = rowIndex;
-            this.Cells = new List<JccCell>();
+            RowIndex = rowIndex;
+            Cells = new List<JccCell>();
         }
         public List<JccCell> Cells
         {
@@ -21,8 +21,8 @@ namespace JCCDataFrame.Entities
 
         public object Clone()
         {
-            JccRow clonedrow = new JccRow(this.RowIndex);
-            foreach (JccCell cell in this.Cells)
+            JccRow clonedrow = new JccRow(RowIndex);
+            foreach (JccCell cell in Cells)
             {
                 clonedrow.Cells.Add(cell.Clone() as JccCell);
             }

@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JCCDataFrame.Entities
+namespace JCCDataFrame.Entities.Spreadsheet
 {
-    public class JccCell:ICloneable
+    public class JccCell : ICloneable
     {
         public JccCell(int cellIndex, string value)
         {
             if (value == null)
             {
-                this.Value = string.Empty;
+                Value = string.Empty;
             }
             else
             {
-                this.Value = value;
+                Value = value;
             }
-            this.CellIndex = cellIndex;
+            CellIndex = cellIndex;
         }
 
         public string Value { get; set; }
@@ -26,13 +26,13 @@ namespace JCCDataFrame.Entities
 
         public override string ToString()
         {
-            return this.Value;
+            return Value;
         }
         public object Clone()
         {
-            JccCell clonedCell = new JccCell(this.CellIndex, this.Value);
-            clonedCell.Comment = this.Comment;
-            clonedCell.Formula = this.Formula;
+            JccCell clonedCell = new JccCell(CellIndex, Value);
+            clonedCell.Comment = Comment;
+            clonedCell.Formula = Formula;
             return clonedCell;
         }
     }

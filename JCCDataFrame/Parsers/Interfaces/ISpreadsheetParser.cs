@@ -1,9 +1,9 @@
-﻿using JCCDataFrame.Entities;
+﻿using JCCDataFrame.Entities.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace JCCDataFrame
+namespace JCCDataFrame.Parsers.Interfaces
 {
     public interface ISpreadsheetParser
     {

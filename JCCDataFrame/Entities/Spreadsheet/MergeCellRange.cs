@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JCCDataFrame.Entities
+namespace JCCDataFrame.Entities.Spreadsheet
 {
     /// <summary>
     /// 合并单元格

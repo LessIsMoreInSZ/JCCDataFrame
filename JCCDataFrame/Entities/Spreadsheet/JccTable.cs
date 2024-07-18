@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace JCCDataFrame.Entities
+namespace JCCDataFrame.Entities.Spreadsheet
 {
     public class JccTable : ICloneable
     {
         public JccTable()
         {
-            this.Name = string.Empty;
-            this.HeaderRows = new List<JccRow>();
-            this.Rows = new List<JccRow>();
-            this.LastColumnIndex = -1;
-            this.MergeCells = new List<MergeCellRange>();
+            Name = string.Empty;
+            HeaderRows = new List<JccRow>();
+            Rows = new List<JccRow>();
+            LastColumnIndex = -1;
+            MergeCells = new List<MergeCellRange>();
         }
         /// <summary>
         /// The sheet has column header (row)
         /// </summary>
         public bool HasHeader
         {
-            get { return this.HeaderRows.Count > 0; }
+            get { return HeaderRows.Count > 0; }
         }
 
         public List<MergeCellRange> MergeCells { get; set; }
@@ -53,7 +53,7 @@ namespace JCCDataFrame.Entities
         {
 
             int lastCol = 0;
-            DataTable dt = new DataTable(this.Name);
+            DataTable dt = new DataTable(Name);
 
             int rowIndex = 0;
             if (HasHeader)
@@ -64,14 +64,14 @@ namespace JCCDataFrame.Entities
                     dt.Columns.Add(col);
                     lastCol++;
                 }
-                for (int j = dt.Columns.Count; this.LastColumnIndex > 0 && j <= this.LastColumnIndex; j++)
+                for (int j = dt.Columns.Count; LastColumnIndex > 0 && j <= LastColumnIndex; j++)
                 {
                     dt.Columns.Add(string.Empty);
                     lastCol++;
                 }
                 rowIndex++;
             }
-            foreach (var row in this.Rows)
+            foreach (var row in Rows)
             {
                 DataRow drow = null;
                 if (rowIndex < row.RowIndex)
@@ -111,22 +111,22 @@ namespace JCCDataFrame.Entities
 
         public override string ToString()
         {
-            return string.Format("[{0}]", this.Name);
+            return string.Format("[{0}]", Name);
         }
 
         public object Clone()
         {
             JccTable newtt = new JccTable();
-            newtt.PageFooter = this.PageFooter;
-            newtt.PageHeader = this.PageHeader;
-            newtt.Name = this.Name;
-            newtt.LastColumnIndex = this.LastColumnIndex;
-            newtt.LastRowIndex = this.LastRowIndex;
-            foreach (JccRow row in this.Rows)
+            newtt.PageFooter = PageFooter;
+            newtt.PageHeader = PageHeader;
+            newtt.Name = Name;
+            newtt.LastColumnIndex = LastColumnIndex;
+            newtt.LastRowIndex = LastRowIndex;
+            foreach (JccRow row in Rows)
             {
                 newtt.Rows.Add(row.Clone() as JccRow);
             }
-            foreach (JccRow header in this.HeaderRows)
+            foreach (JccRow header in HeaderRows)
             {
                 newtt.HeaderRows.Add(header.Clone() as JccRow);
             }
