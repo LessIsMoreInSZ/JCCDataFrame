@@ -138,6 +138,8 @@ namespace JCCDataFrame.Parsers
             PropertySet set = PropertySetFactory.Create(dis);
             return set;
         }
+
+
         public ParserContext Context
         {
             get;

@@ -69,7 +69,6 @@ namespace JCCDataFrame.Parsers.Spreadsheet
             get;
             set;
         }
-        JCCDataFrame.ParserContext ISpreadsheetParser.Context { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         JccTable Parse(IWorkbook workbook, int sheetIndex, bool extractHeader, bool extractFooter, bool hasHeader, bool fillBlankCells, bool includeComment, HSSFDataFormatter formatter)
         {
